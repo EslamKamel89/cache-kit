@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IslamDev\CacheKit\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CacheKitCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'cache-kit';
 
     public $description = 'My command';
 
