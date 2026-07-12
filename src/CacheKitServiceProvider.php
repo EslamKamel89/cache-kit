@@ -2,9 +2,11 @@
 
 namespace IslamDev\CacheKit;
 
+use IslamDev\CacheKit\Commands\CacheKitCommand;
+use IslamDev\CacheKit\Contracts\HasCacheableMethods;
+use IslamDev\CacheKit\Tests\Services\TestService;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IslamDev\CacheKit\Commands\CacheKitCommand;
 
 class CacheKitServiceProvider extends PackageServiceProvider
 {
@@ -21,5 +23,19 @@ class CacheKitServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_cache_kit_table')
             ->hasCommand(CacheKitCommand::class);
+    }
+
+    public function bootingPackage()
+    {
+        $this->app->beforeResolving(function ($abstract) {
+            $class = is_string($abstract) ? $abstract : get_class($abstract);
+            if (! class_exists($class)) {
+                return;
+            }
+            if (! in_array(HasCacheableMethods::class, class_implements($class) ?: [], true)) {
+                return;
+            }
+            app()->bind(TestService::class, fn () => new class {});
+        });
     }
 }

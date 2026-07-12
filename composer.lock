@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a033f86a33752d0f6bd621ea5440ec1",
+    "content-hash": "a97d534c2d83b9ae33f269850987133d",
     "packages": [
         {
             "name": "brick/math",
@@ -133,6 +133,59 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "christophrumpel/method-overrider",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/christophrumpel/method-overrider.git",
+                "reference": "5f08836e68f0b7a3358575913c1c86df4aba1727"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/christophrumpel/method-overrider/zipball/5f08836e68f0b7a3358575913c1c86df4aba1727",
+                "reference": "5f08836e68f0b7a3358575913c1c86df4aba1727",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.17.3",
+                "pestphp/pest": "^3.0.7",
+                "pestphp/pest-plugin-type-coverage": "^3.0",
+                "phpstan/phpstan": "^1.12.4",
+                "rector/rector": "^1.2.5",
+                "symfony/var-dumper": "^7.1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ChristophRumpel\\MethodOverrider\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Rumpel",
+                    "email": "christoph@christoph-rumpel.com"
+                }
+            ],
+            "description": "A PHP package to override methods.",
+            "keywords": [
+                "methods",
+                "overriding",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/christophrumpel/method-overrider/issues",
+                "source": "https://github.com/christophrumpel/method-overrider/tree/v1.4.0"
+            },
+            "time": "2025-10-01T08:13:08+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
