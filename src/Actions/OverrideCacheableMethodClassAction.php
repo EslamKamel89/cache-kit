@@ -20,6 +20,8 @@ class OverrideCacheableMethodClassAction
         $attribute = $methodToOverride->getAttributes(Cacheable::class)[0];
         $cacheableInstance = $attribute->newInstance();
 
+        $this->saveKeyToCache($cacheableInstance->key);
+
         $methodImplementation = function ($original) use ($cacheableInstance) {
             return Cache::remember(
                 key: $cacheableInstance->key,
@@ -44,5 +46,12 @@ class OverrideCacheableMethodClassAction
             File::delete($filePath);
         }
         app()->bind($class, fn () => $overriddenClassInstance);
+    }
+
+    protected function saveKeyToCache(string $key)
+    {
+        $keys = Cache::get('method-cache-keys', []);
+        $keys[] = $key;
+        Cache::forever('method-cache-keys', $keys);
     }
 }
