@@ -2,9 +2,9 @@
 
 namespace IslamDev\CacheKit;
 
+use IslamDev\CacheKit\Actions\OverrideCacheableMethodClassAction;
 use IslamDev\CacheKit\Commands\CacheKitCommand;
 use IslamDev\CacheKit\Contracts\HasCacheableMethods;
-use IslamDev\CacheKit\Tests\Services\TestService;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -35,7 +35,7 @@ class CacheKitServiceProvider extends PackageServiceProvider
             if (! in_array(HasCacheableMethods::class, class_implements($class) ?: [], true)) {
                 return;
             }
-            app()->bind(TestService::class, fn () => new class {});
+            app(OverrideCacheableMethodClassAction::class)->handle($class);
         });
     }
 }
